@@ -24,72 +24,72 @@ class SearchBar extends React.Component{
     }
 
     getSortByClass(sortByOption){
-        if(this.state.sortBy === sortByOption){
-            return 'active';
-        }else{
-            return '';
-        }
+      if(this.state.sortBy === sortByOption){
+        return 'active';
+      }else{
+        return '';
+      }
     }
 
     handleSortByChange(sortByOption){
-        this.setState({
-            sortBy: sortByOption
-        });
+      this.setState({
+        sortBy: sortByOption
+      });
     }
 
     handleTermChange(event){
-        this.setState({
-            term: event.target.value
-        });
+      this.setState({
+        term: event.target.value
+      });
     }
 
     handleLocationChange(event){
-        this.setState({
-            location: event.target.value
-        });
+      this.setState({
+        location: event.target.value
+      });
     }
 
     handleSearch(event){
-        this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-        event.preventDefault();
+      this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+      event.preventDefault();
     }
 
 
     renderSortByOptions(){
-        return Object.keys(this.sortByOptions).map(sortByOption =>{
-            let sortByOptionValue = this.sortByOptions[sortByOption];
-            return <li 
-                    // onClick = {() => this.handleSortByChange(sortByOptionValue)} can use this and bind in the constructor
-                    // because you need the param from this context, however this method is being called in rendor. so you can't 
-                    // have setState be called in any function in the call stack, because it will result in inf loop, 
-                    // (setstate implicility calls render)
-                    // Simply having onClick = {this.handleSortByChange(sortByOptionValue)} is incorrect because it will call the function which
-                    // makes infinite as above
-                    onClick = {this.handleSortByChange.bind(this, sortByOptionValue)}
-                    className = {this.getSortByClass(sortByOptionValue)}
-                    key={sortByOptionValue}>
-                    {sortByOption}
-                    </li>
-        });
+      return Object.keys(this.sortByOptions).map(sortByOption =>{
+        let sortByOptionValue = this.sortByOptions[sortByOption];
+        return <li 
+          // onClick = {() => this.handleSortByChange(sortByOptionValue)} can use this and bind in the constructor
+          // because you need the param from this context, however this method is being called in rendor. so you can't 
+          // have setState be called in any function in the call stack, because it will result in inf loop, 
+          // (setstate implicility calls render)
+          // Simply having onClick = {this.handleSortByChange(sortByOptionValue)} is incorrect because it will call the function which
+          // makes infinite as above
+          onClick = {this.handleSortByChange.bind(this, sortByOptionValue)}
+          className = {this.getSortByClass(sortByOptionValue)}
+          key={sortByOptionValue}>
+          {sortByOption}
+          </li>
+      });
     }
 
     render(){
-        return (
-            <div className="SearchBar">
-                <div className="SearchBar-sort-options">
-                    <ul>
-                    {this.renderSortByOptions()}
-                    </ul>
-                </div>
-                <div className="SearchBar-fields">
-                    <input placeholder="Search Businesses" onChange = {this.handleTermChange}/>
-                    <input placeholder="Where?" onChange = {this.handleLocationChange}/>
-                </div>
-                <div className="SearchBar-submit">
-                    <a onClick = {this.handleSearch}>Let's Go</a>
-                </div>
-            </div>
-        )
+      return (
+        <div className="SearchBar">
+          <div className="SearchBar-sort-options">
+            <ul>
+            {this.renderSortByOptions()}
+            </ul>
+          </div>
+          <div className="SearchBar-fields">
+            <input placeholder="Search Businesses" onChange = {this.handleTermChange}/>
+            <input placeholder="Where?" onChange = {this.handleLocationChange}/>
+          </div>
+          <div className="SearchBar-submit">
+            <a onClick = {this.handleSearch}>Let's Go</a>
+          </div>
+        </div>
+      )
     }
 
 };
