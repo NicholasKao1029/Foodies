@@ -10,6 +10,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "uuid": "^8.1.0",
     "whatwg-fetch": "^3.0.0"
   },
   "scripts": {

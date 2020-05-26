@@ -4,7 +4,8 @@ import SearchBar from '../SearchBar/SearchBar';
 import BusinessList from '../BusinessList/BusinessList';
 import Yelp from '../../util/Yelp';
 import SearchSuggestions from '../SearchSuggestions/SearchSuggestions';
-
+import Location from '../../util/location';
+import {v4 as uuidv4} from 'uuid';
 // const business = {
 //   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
 //   name: 'MarginOtto Pizzeria',
@@ -28,14 +29,17 @@ class App extends React.Component {
       businesses: [],
       message: "Search what your stomach desires, or try some of our recommendations",
       suggestion: [{
+        id: uuidv4(),
         location: "Vancouver",
         category: "Sushi",
         imageSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/1200px-Sushi_platter.jpg",
       },{
+        id: uuidv4(),
         location: "Vancouver",
         category: "Pizza",
         imageSrc: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2F1563392585%2Fpepperoni-skillet-pizza-1907.jpg%3Fitok%3Dl_08ukf0",
       },{
+        id: uuidv4(),
         location: "Vancouver",
         category: "Korean",
         imageSrc: "https://cdn.shopify.com/s/files/1/2246/7407/articles/kfoodtable-e1552928746975_1444x.png?v=1560793954",
@@ -62,6 +66,10 @@ class App extends React.Component {
     console.log(`${term}, ${location}`);
     this.searchYelp(term, location, "best_match");
   }
+
+
+// test for later 
+// <button onClick = {Location.where()}></button>
 
   render(){
       return (
