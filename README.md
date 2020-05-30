@@ -1,3 +1,5 @@
+A React app that visualizes food review Data taken from Yelp's API. Search Capabilities on a number of different metrics.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
