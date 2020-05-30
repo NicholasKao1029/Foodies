@@ -74,7 +74,7 @@ class App extends React.Component {
   render(){
       return (
         <div className="App">
-          <h1>YELP CLONE</h1>
+          <h1>Foodies</h1>
           <SearchBar searchYelp = {this.searchYelp}/>
           <h2>{this.state.message}</h2>
           <BusinessList businesses = {this.state.businesses}/>
